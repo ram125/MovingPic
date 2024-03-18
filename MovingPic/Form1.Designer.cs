@@ -47,8 +47,8 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.moveTimerYes);
             // 
             // Form1
             // 
@@ -58,7 +58,8 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyisdown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyisup);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

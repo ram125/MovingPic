@@ -12,29 +12,82 @@ namespace MovingPic
 {
     public partial class Form1 : Form
     {
-        public int x;
-        public int y;
+
+        bool moveRight, moveLeft, moveUp, moveDown;
+        int speed = 10;
 
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            int x = pictureBox1.Location.X;
-            int y = pictureBox1.Location.Y;
             timer1.Start();
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
+        private void moveTimerYes(object sender, EventArgs e)
         {
-            if (x > 500)
+            if (moveLeft == true && pictureBox1.Left > 0)
             {
-                x = -410;
+                pictureBox1.Left -= speed;
             }
-            x = x+5;
-            pictureBox1.Location = new Point(x, y);
+
+            if (moveRight == true && pictureBox1.Left < 680)
+            {
+                pictureBox1.Left += speed;
+            }
+
+            if (moveUp == true && pictureBox1.Top > 0)
+            {
+                pictureBox1.Top -= speed;
+            }
+
+            if (moveDown == true && pictureBox1.Top < 270)
+            {
+                pictureBox1.Top += speed;
+            }
+
+        }
+
+        private void keyisdown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                moveLeft = true;
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                moveRight = true;
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                moveUp = true;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                moveDown = true;
+            }
+        }
+        private void keyisup(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                moveLeft = false;
+            }
+
+
+            if (e.KeyCode == Keys.Right)
+            {
+                moveRight = false;
+            }
+
+
+            if (e.KeyCode == Keys.Up)
+            {
+                moveUp = false;
+            }
+
+
+            if (e.KeyCode == Keys.Down)
+            {
+                moveDown = false;
+            }
         }
     }
 }
